@@ -90,8 +90,8 @@ resource "aws_instance" "this" {
     volume_type = var.volume_type
   }
   tags = {
-    Name = "${var.name}-${count.index +1}"
-    Automation= "Terraform"
+    Name       = "${var.name}-${count.index + 1}"
+    Automation = "Terraform"
 
   }
 

@@ -37,8 +37,8 @@ variable "volume_type" {
 }
 
 variable "description" {
-    type = string
-    default = "office IP"
+  type    = string
+  default = "office IP"
 
 }
 
@@ -51,9 +51,9 @@ variable "pub_key" {
 }
 
 variable "instance_count" {
-    description = "Set the no of instances"
-    type = number
-    default = "1"
-  
+  description = "Set the no of instances"
+  type        = number
+  default     = "1"
+
 }
 
