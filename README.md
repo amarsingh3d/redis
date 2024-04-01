@@ -6,6 +6,10 @@
 ```
 aws configure
 ```
+- if you would like to use different profile use following command to set default profile.
+```
+export AWS_DEFAULT_PROFILE=<profiel name>
+```
 ## Download code from the following repo
 ```
 git clone -b main https://github.com/amarsingh3d/redis.git
@@ -15,7 +19,7 @@ git clone -b main https://github.com/amarsingh3d/redis.git
 - Switch to terraform directory and replace following variables.
 
 ```
-cd redis/terrafrom
+cd redis/terraform
 
 ```
 
@@ -38,7 +42,9 @@ variable "pub_key" {
 ```
 - Run Terraform  init, plan and apply
 ```
-terraform init
+terraform init \
+terraform fmt \
+terraform validate
 ```
 ```
 terraform plan
@@ -66,6 +72,10 @@ cd redis/helm
 ```
 minikube start
 ```
+- varify minikube status
+```
+minikube status
+```
 - Create Redis cluster
 ```
 helm install redis-cluster redis-cluster/ -f redis-cluster/values.yaml
@@ -74,9 +84,13 @@ helm install redis-cluster redis-cluster/ -f redis-cluster/values.yaml
 ```
 helm install redis-client redis-client/ -f redis-client/values.yaml
 ```
+- Get pod details and make sure all pod are up and running
+```
+kubectl get pod
+```
 - get the redis cluster auth password
 ```
-export REDIS_PASSWORD=$(kubectl get secret --namespace default redis -o jsonpath="{.data.redis-password}" | base64 -d)
+export REDIS_PASSWORD=$(kubectl get secret --namespace default redis-cluster -o jsonpath="{.data.redis-password}" | base64 -d)
 echo $REDIS_PASSWORD
 ```
 - connect redis-client pod and create redis key
@@ -90,7 +104,7 @@ kubectl exec --tty -i < redis client pod name here > -c redis-client /bin/bash
 ```
 - Connect redis master
 ```
-redis-cli -h redis-master
+redis-cli -h redis-cluster-master
 ```
 - authorize usign password, replace password from above 3rd last steps
 ```
