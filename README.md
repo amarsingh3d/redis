@@ -1,4 +1,4 @@
-# Setup Minikube Cluser on EC2 machine and run Redis Cluser using helm
+# Setup Minikube Cluser on EC2 machine and run Redis Cluser using helm - using userdata to install Docker, Minikube, kubectl and Helm
 - This document describe a steps on how to setup minikube cluster on EC2 and run Redis cluser using Helm chart.
 ## Prerequisites
 - Install AWS CLI - (https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
