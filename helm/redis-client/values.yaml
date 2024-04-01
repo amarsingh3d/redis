@@ -1,0 +1,19 @@
+# Default values for apache-web.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+AppName: redis-client
+replicaCount: 1
+
+image: redis
+
+limits:
+  memory: 500Mi
+  cpu: 100m
+requests: 
+  memory: 200Mi
+  cpu: 70m
+
+containerPort: 6379
+
+
+
